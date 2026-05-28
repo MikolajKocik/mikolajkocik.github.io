@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 import photo from "@/assets/photo.jpeg";
 import heroBg from "@/assets/hero-bg.svg";
 import diagramLaptop from "@/assets/diagram-laptop.png";
+import { useTheme } from "@/components/theme-provider";
 import {
   SiDotnet,
   SiSharp,
@@ -85,6 +88,7 @@ const projects = [
     tagline: "Warehouse management system.",
     desc: "Handles PZ/WZ/RW/MM operations, generates PDF documents and stores them in Azure Blob Storage. Includes AI-assisted vector search via Ollama.",
     solved: "Eliminates manual stock tracking. An asynchronous document flow offloads the API — a background worker generates PDFs and saves metadata to the database. Deployed via GitHub Actions with OIDC, no stored secrets.",
+    tech: [".NET 8", "PostgreSQL", "pgvector", "Ollama (RAG)", "Event-Driven", "RabbitMQ", "Redis"],
     href: GITHUB_URL,
   },
   {
@@ -92,6 +96,7 @@ const projects = [
     tagline: "Cloud-native vehicle reservation platform.",
     desc: "Covering the full rental lifecycle: search, booking, Stripe payments, PDF/Excel reporting, and email notifications via Hangfire background workers.",
     solved: "Decouples long-running tasks (reservation deadlines, emails) from the main API thread. Full observability stack with Grafana and Prometheus. Performance verified under load via Azure Load Testing.",
+    tech: [".NET 8", "Azure", "Docker", "Stripe", "Hangfire", "Grafana"],
     href: GITHUB_URL,
   },
   {
@@ -99,31 +104,34 @@ const projects = [
     tagline: "Hotel management system.",
     desc: "Includes a full reservation cycle, dynamic availability checks, discount codes, Stripe payments, and guest reviews. Includes a dedicated MCP server for AI agent integration.",
     solved: "Automates guest service via AI agents — an LLM invokes MCP tools (e.g. notify_staff → Slack) without human involvement. Eliminates manual booking errors and handles payments without storing sensitive card data.",
+    tech: [".NET 8", "ASP.NET MVC", "Chatbot", "Model Context Protocol"],
     href: GITHUB_URL,
   },
   {
-    name: "WorkPulse",
-    tagline: "Team Command Center",
-    desc: "Blazor-based management platform bringing together Azure DevOps task tracking, SSL certificate expiry monitoring, and real-time host diagnostics into a single unified interface for operations managers.",
-    solved: "Removes the need to open the full Azure DevOps portal or log into servers via RDP/SSH for routine checks. A background service automatically alerts on expiring SSL certificates before they cause outages.",
+    name: "Docs-assistant",
+    tagline: "Retrieval-augmented documentation assistant.",
+    desc: "Indexes large document corpora and serves contextual answers grounded in source material, combining on-device inference with managed Azure AI services.",
+    solved: "Reduces time spent searching internal documentation. A hybrid retrieval pipeline (Azure AI Search + ONNX re-ranking) keeps answers grounded and verifiable, while Hugging Face models handle local embeddings.",
+    tech: [".NET 8", "RAG", "ONNX Runtime", "Hugging Face", "Azure OpenAI", "Azure AI Search"],
     href: GITHUB_URL,
   },
   {
-    name: "AI-helpdesk",
+    name: "ADH — AI-Driven Helpdesk",
     tagline: "Intelligent IT helpdesk system.",
-    desc: "Combines LLMs with proactive infrastructure management. Features a real-time chat interface (SignalR), semantic search via pgvector, automated asset discovery through LDAP/Active Directory, and Jira integration for ticket management.",
-    solved: "Reduces repetitive support tickets through AI automation. A built-in PII scrubber sanitizes queries before they reach the model. Self-healing logic monitors disk space and restarts services without human intervention.",
+    desc: "Combines local LLMs with proactive infrastructure management. Features a real-time chat interface (SignalR), semantic search via pgvector, automated asset discovery through LDAP/Active Directory, and Jira integration for ticket management.",
+    solved: "Reduces repetitive support tickets through AI automation. A built-in PII scrubber sanitizes queries before they reach the model, and an ONNX re-ranker via Semantic Kernel keeps retrieval precise. Self-healing logic monitors disk space and restarts services without human intervention.",
+    tech: [".NET 10", "SignalR", "PostgreSQL", "pgvector", "LDAP", "JIRA", "Local LLMs", "Semantic Kernel", "ONNX Runtime"],
     href: GITHUB_URL,
   },
 ];
 
 const skillGroups = [
-  { title: "Cloud & infra", items: ["Azure", "Azure DevOps", "Azure Functions", "Azure Entra", "Docker", "Docker compose", "Linux", "Git", "CI/CD"] },
-  { title: "Architecture", items: ["C#", "asp net core", "web api (REST)", "MVC", "CQRS", "Clean architecture", "minimal APIs", "mediatR", "EF Core"] },
-  { title: "Testing", items: ["postman", "xUnit", "az load testing", "swagger", "debugger"] },
+  { title: "Cloud & Infrastructure", items: ["Azure", "Azure DevOps", "Azure Functions", "Azure Entra ID", "Docker", "Docker Compose", "Linux", "Git", "CI/CD"] },
+  { title: "Backend & Architecture", items: ["C#", "ASP.NET Core", "Web API (REST)", "ASP.NET MVC", "Minimal APIs", "Clean Architecture", "CQRS", "MediatR", "Entity Framework Core"] },
+  { title: "Quality & Testing", items: ["xUnit", "Postman", "Swagger / OpenAPI", "Azure Load Testing", "Debugging & Profiling"] },
   { title: "Observability & Persistence", items: ["PostgreSQL", "Grafana", "Prometheus"] },
-  { title: "LLM — Topics", items: ["RAG", "Chatbot", "HuggingFace", "Re-ranking", "Tools calling", "Structured Outputs", "Semantic search/cache"] },
-  { title: "AI — related", items: ["microsoft semantic kernel", "model context protocol", "Microsoft ML ONNX", "pgvector", "python (basics)"] },
+  { title: "LLM Engineering", items: ["Retrieval-Augmented Generation", "Conversational Agents", "Hugging Face", "Re-ranking", "Tool Calling", "Structured Outputs", "Semantic Search & Caching"] },
+  { title: "Applied AI", items: ["Microsoft Semantic Kernel", "Model Context Protocol", "ONNX Runtime", "pgvector", "Python (working knowledge)"] },
 ];
 
 const techLogos = [
@@ -145,6 +153,33 @@ const techLogos = [
   { Icon: SiPython, label: "Python", color: "#3776AB" },
 ];
 
+function Reveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: "easeOut", delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, toggle } = useTheme();
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 hover:bg-white/10 transition-colors"
+    >
+      {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+    </button>
+  );
+}
+
 function Portfolio() {
   const marqueeItems = [...techLogos, ...techLogos];
   const currentYear = new Date().getFullYear();
@@ -154,13 +189,16 @@ function Portfolio() {
       <header className="sticky top-0 z-50 bg-nav text-nav-foreground border-b border-white/10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
           <a href="#top" className="font-mono text-sm sm:text-lg truncate">{"{{ Mikołaj Kocik }}"}</a>
-          <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-6 md:gap-8 text-xs sm:text-sm">
-            {navItems.map((n) => (
-              <a key={n.label} href={n.href} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener noreferrer" : undefined} className="hover:text-accent transition-colors">
-                {n.label}
-              </a>
-            ))}
-          </nav>
+          <div className="flex items-center gap-3 sm:gap-5">
+            <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-6 md:gap-8 text-xs sm:text-sm">
+              {navItems.map((n) => (
+                <a key={n.label} href={n.href} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener noreferrer" : undefined} className="hover:text-accent transition-colors">
+                  {n.label}
+                </a>
+              ))}
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -190,13 +228,13 @@ function Portfolio() {
 
       {/* INTRO */}
       <section className="bg-background">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-14 md:py-20 space-y-5 text-lg">
+        <Reveal className="mx-auto max-w-4xl px-4 sm:px-6 py-14 md:py-20 space-y-5 text-lg">
           <p>Hi! I'm Mikołaj Kocik, a <span className="text-primary font-medium">.NET Developer &amp; AI Engineer</span>.</p>
           <p>
             I build applications with a strong emphasis on <span className="text-primary font-medium">scalability</span> and{" "}
             <span className="text-primary font-medium">architectural integrity</span>, always evaluating multiple approaches to find the best possible answer to an engineering problem.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* TECH MARQUEE */}
@@ -220,7 +258,7 @@ function Portfolio() {
         </div>
       </section>
       <section className="bg-background border-b border-border">
-        <div className="mx-auto max-w-5xl px-6 py-16 flex justify-center">
+        <Reveal className="mx-auto max-w-5xl px-6 py-16 flex justify-center">
           <div className="relative bg-gradient-to-b from-muted/70 to-muted/30 rounded-2xl p-5 md:p-8 border border-border/60 shadow-2xl">
             <img
               src={diagramLaptop}
@@ -229,29 +267,38 @@ function Portfolio() {
               className="w-full h-auto max-w-4xl rounded-lg"
             />
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* PROJECTS */}
       <section id="projects" className="bg-background">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Projects</h2>
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Selected Projects</h2></Reveal>
           <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((p) => (
-              <article key={p.name} className="bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <header className="bg-accent text-accent-foreground px-4 sm:px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
-                  <h3 className="text-lg sm:text-xl font-semibold">{p.name}</h3>
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-white transition">
-                    <SiGithub /> Code
-                  </a>
-                </header>
-                <div className="p-6 space-y-4">
-                  <p className="font-medium">{p.tagline}</p>
-                  <p className="text-muted-foreground">{p.desc}</p>
-                  <h4 className="text-primary text-xl font-semibold pt-2">What problems solved?</h4>
-                  <p className="text-muted-foreground">{p.solved}</p>
-                </div>
-              </article>
+            {projects.map((p, idx) => (
+              <Reveal key={p.name} delay={idx * 0.05}>
+                <article className="h-full bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                  <header className="bg-accent text-accent-foreground px-4 sm:px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
+                    <h3 className="text-lg sm:text-xl font-semibold">{p.name}</h3>
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-background/80 transition">
+                      <SiGithub /> Code
+                    </a>
+                  </header>
+                  <div className="p-6 space-y-4">
+                    <p className="font-medium">{p.tagline}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.tech.map((t) => (
+                        <span key={t} className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-mono bg-primary/10 text-primary border border-primary/20">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground">{p.desc}</p>
+                    <h4 className="text-primary text-xl font-semibold pt-2">Problems solved</h4>
+                    <p className="text-muted-foreground">{p.solved}</p>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
           <p className="mt-10 text-lg">More projects and descriptions available on my Github profile</p>
@@ -264,8 +311,8 @@ function Portfolio() {
       {/* EXPERIENCE */}
       <section id="experience" className="bg-panel">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Experience</h2>
-          <div className="relative pl-8 border-l-2 border-border">
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Experience</h2></Reveal>
+          <Reveal className="relative pl-8 border-l-2 border-border">
             <span className="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-accent bg-background" />
             <h3 className="text-2xl font-medium">Junior Fullstack Developer</h3>
             <p className="text-muted-foreground mt-1">December 2025 – January 2026<br />Thinq Sp. z o.o. · Poznań</p>
@@ -276,14 +323,14 @@ function Portfolio() {
               <li>Designed and built responsive UI components using Telerik UI for ASP.NET Core</li>
               <li>Maintained and enhanced a legacy system based on Apache Subversion (SVN)</li>
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* EDUCATION */}
       <section id="education" className="bg-background">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2>
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2></Reveal>
           <p className="text-xl">Computer Science</p>
           <p className="text-lg text-muted-foreground">WSB Merito University in Poznań</p>
           <ul className="mt-4 space-y-3 list-disc pl-6">
@@ -302,15 +349,17 @@ function Portfolio() {
       {/* SKILLS */}
       <section id="skills" className="bg-panel">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Skills</h2>
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Skills</h2></Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillGroups.map((g) => (
-              <div key={g.title} className="bg-card border border-border rounded-md overflow-hidden">
-                <div className="bg-accent text-accent-foreground px-4 py-2 font-semibold">{g.title}</div>
-                <ul className="p-5 space-y-1.5 list-disc pl-8 text-muted-foreground">
-                  {g.items.map((i) => <li key={i}>{i}</li>)}
-                </ul>
-              </div>
+            {skillGroups.map((g, idx) => (
+              <Reveal key={g.title} delay={idx * 0.05}>
+                <div className="h-full bg-card border border-border rounded-md overflow-hidden hover:border-primary/40 transition-colors">
+                  <div className="bg-accent text-accent-foreground px-4 py-2 font-semibold">{g.title}</div>
+                  <ul className="p-5 space-y-1.5 list-disc pl-8 text-muted-foreground">
+                    {g.items.map((i) => <li key={i}>{i}</li>)}
+                  </ul>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
