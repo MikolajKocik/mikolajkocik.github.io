@@ -143,7 +143,6 @@ const techLogos = [
   { Icon: SiHuggingface, label: "HuggingFace", color: "#FFD21E" },
   { Icon: SiOllama, label: "Ollama", color: "#000000" },
   { Icon: SiPython, label: "Python", color: "#3776AB" },
-  { Icon: SiBlazor, label: "Blazor", color: "#512BD4" },
 ];
 
 function Portfolio() {
