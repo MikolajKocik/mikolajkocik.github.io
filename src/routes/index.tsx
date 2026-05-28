@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.svg";
 import diagramLaptop from "@/assets/diagram-laptop.png";
 import {
   SiDotnet,
-  SiSharp,
+  SiCsharp,
   SiPostgresql,
   SiDocker,
   SiHuggingface,
@@ -17,7 +17,6 @@ import {
   SiLinux,
   SiPython,
   SiSwagger,
-  SiBlazor,
 } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { VscAzure, VscAzureDevops } from "react-icons/vsc";
