@@ -189,13 +189,16 @@ function Portfolio() {
       <header className="sticky top-0 z-50 bg-nav text-nav-foreground border-b border-white/10">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
           <a href="#top" className="font-mono text-sm sm:text-lg truncate">{"{{ Mikołaj Kocik }}"}</a>
-          <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-6 md:gap-8 text-xs sm:text-sm">
-            {navItems.map((n) => (
-              <a key={n.label} href={n.href} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener noreferrer" : undefined} className="hover:text-accent transition-colors">
-                {n.label}
-              </a>
-            ))}
-          </nav>
+          <div className="flex items-center gap-3 sm:gap-5">
+            <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-6 md:gap-8 text-xs sm:text-sm">
+              {navItems.map((n) => (
+                <a key={n.label} href={n.href} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener noreferrer" : undefined} className="hover:text-accent transition-colors">
+                  {n.label}
+                </a>
+              ))}
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
