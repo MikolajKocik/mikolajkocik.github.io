@@ -273,7 +273,7 @@ function Portfolio() {
       {/* PROJECTS */}
       <section id="projects" className="bg-background">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Projects</h2>
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Selected Projects</h2></Reveal>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((p, idx) => (
               <Reveal key={p.name} delay={idx * 0.05}>
