@@ -172,8 +172,8 @@ function Portfolio() {
           <img src={photo} alt="Mikołaj Kocik" className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-md object-cover ring-2 ring-white/40 shadow-2xl mx-auto md:mx-0" />
           <div className="text-white">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">.NET Developer<br />&amp; AI Engineer</h1>
-            <div className="mt-4 h-px w-64 bg-white/60" />
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-4 h-px w-48 sm:w-64 bg-white/60 mx-auto md:mx-0" />
+            <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2 rounded-md bg-primary/80 hover:bg-primary text-primary-foreground border border-white/30 transition">
                 <SiGithub /> Github
               </a>
