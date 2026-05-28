@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
 import photo from "@/assets/photo.jpeg";
 import heroBg from "@/assets/hero-bg.svg";
 import diagramLaptop from "@/assets/diagram-laptop.png";
+import { useTheme } from "@/components/theme-provider";
 import {
   SiDotnet,
   SiSharp,
