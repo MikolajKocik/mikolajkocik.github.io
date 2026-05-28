@@ -330,7 +330,7 @@ function Portfolio() {
       {/* EDUCATION */}
       <section id="education" className="bg-background">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2>
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2></Reveal>
           <p className="text-xl">Computer Science</p>
           <p className="text-lg text-muted-foreground">WSB Merito University in Poznań</p>
           <ul className="mt-4 space-y-3 list-disc pl-6">
