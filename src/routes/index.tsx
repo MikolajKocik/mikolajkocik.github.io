@@ -228,13 +228,13 @@ function Portfolio() {
 
       {/* INTRO */}
       <section className="bg-background">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-14 md:py-20 space-y-5 text-lg">
+        <Reveal className="mx-auto max-w-4xl px-4 sm:px-6 py-14 md:py-20 space-y-5 text-lg">
           <p>Hi! I'm Mikołaj Kocik, a <span className="text-primary font-medium">.NET Developer &amp; AI Engineer</span>.</p>
           <p>
             I build applications with a strong emphasis on <span className="text-primary font-medium">scalability</span> and{" "}
             <span className="text-primary font-medium">architectural integrity</span>, always evaluating multiple approaches to find the best possible answer to an engineering problem.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* TECH MARQUEE */}
