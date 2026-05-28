@@ -215,10 +215,20 @@ function Portfolio() {
         </div>
       </section>
 
-      {/* QUOTE */}
+      {/* QUOTE + DIAGRAM */}
       <section className="bg-primary text-primary-foreground">
         <div className="mx-auto max-w-5xl px-6 py-12 text-center">
           <p className="text-2xl md:text-3xl font-light italic">"From system design to clean implementation."</p>
+        </div>
+      </section>
+      <section className="bg-background border-b border-border">
+        <div className="mx-auto max-w-5xl px-6 py-16 flex justify-center">
+          <img
+            src={diagramLaptop}
+            alt="UML sequence diagram of a reservation and payment flow displayed on a laptop — designed by Mikołaj Kocik"
+            loading="lazy"
+            className="w-full h-auto max-w-4xl drop-shadow-2xl"
+          />
         </div>
       </section>
 
