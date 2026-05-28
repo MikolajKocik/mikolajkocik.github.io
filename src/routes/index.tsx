@@ -221,12 +221,14 @@ function Portfolio() {
       </section>
       <section className="bg-background border-b border-border">
         <div className="mx-auto max-w-5xl px-6 py-16 flex justify-center">
-          <img
-            src={diagramLaptop}
-            alt="UML sequence diagram of a reservation and payment flow displayed on a laptop — designed by Mikołaj Kocik"
-            loading="lazy"
-            className="w-full h-auto max-w-4xl drop-shadow-2xl"
-          />
+          <div className="relative bg-gradient-to-b from-muted/70 to-muted/30 rounded-2xl p-5 md:p-8 border border-border/60 shadow-2xl">
+            <img
+              src={diagramLaptop}
+              alt="UML sequence diagram of a reservation and payment flow displayed on a laptop — designed by Mikołaj Kocik"
+              loading="lazy"
+              className="w-full h-auto max-w-4xl rounded-lg"
+            />
+          </div>
         </div>
       </section>
 
