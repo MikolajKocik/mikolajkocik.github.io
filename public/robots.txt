@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mikolajkocik.github.io/sitemap.xml
