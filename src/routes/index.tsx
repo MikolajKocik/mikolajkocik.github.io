@@ -239,9 +239,9 @@ function Portfolio() {
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((p) => (
               <article key={p.name} className="bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <header className="bg-accent text-accent-foreground px-5 py-3 flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">{p.name}</h3>
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-white transition">
+                <header className="bg-accent text-accent-foreground px-4 sm:px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
+                  <h3 className="text-lg sm:text-xl font-semibold">{p.name}</h3>
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-white transition">
                     <SiGithub /> Code
                   </a>
                 </header>
