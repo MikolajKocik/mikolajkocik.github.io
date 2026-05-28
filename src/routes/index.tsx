@@ -88,6 +88,7 @@ const projects = [
     tagline: "Warehouse management system.",
     desc: "Handles PZ/WZ/RW/MM operations, generates PDF documents and stores them in Azure Blob Storage. Includes AI-assisted vector search via Ollama.",
     solved: "Eliminates manual stock tracking. An asynchronous document flow offloads the API — a background worker generates PDFs and saves metadata to the database. Deployed via GitHub Actions with OIDC, no stored secrets.",
+    tech: [".NET 8", "PostgreSQL", "pgvector", "Ollama (RAG)", "Event-Driven", "RabbitMQ", "Redis"],
     href: GITHUB_URL,
   },
   {
@@ -95,6 +96,7 @@ const projects = [
     tagline: "Cloud-native vehicle reservation platform.",
     desc: "Covering the full rental lifecycle: search, booking, Stripe payments, PDF/Excel reporting, and email notifications via Hangfire background workers.",
     solved: "Decouples long-running tasks (reservation deadlines, emails) from the main API thread. Full observability stack with Grafana and Prometheus. Performance verified under load via Azure Load Testing.",
+    tech: [".NET 8", "Azure", "Docker", "Stripe", "Hangfire", "Grafana"],
     href: GITHUB_URL,
   },
   {
@@ -102,31 +104,34 @@ const projects = [
     tagline: "Hotel management system.",
     desc: "Includes a full reservation cycle, dynamic availability checks, discount codes, Stripe payments, and guest reviews. Includes a dedicated MCP server for AI agent integration.",
     solved: "Automates guest service via AI agents — an LLM invokes MCP tools (e.g. notify_staff → Slack) without human involvement. Eliminates manual booking errors and handles payments without storing sensitive card data.",
+    tech: [".NET 8", "ASP.NET MVC", "Chatbot", "Model Context Protocol"],
     href: GITHUB_URL,
   },
   {
-    name: "WorkPulse",
-    tagline: "Team Command Center",
-    desc: "Blazor-based management platform bringing together Azure DevOps task tracking, SSL certificate expiry monitoring, and real-time host diagnostics into a single unified interface for operations managers.",
-    solved: "Removes the need to open the full Azure DevOps portal or log into servers via RDP/SSH for routine checks. A background service automatically alerts on expiring SSL certificates before they cause outages.",
+    name: "Docs-assistant",
+    tagline: "Retrieval-augmented documentation assistant.",
+    desc: "Indexes large document corpora and serves contextual answers grounded in source material, combining on-device inference with managed Azure AI services.",
+    solved: "Reduces time spent searching internal documentation. A hybrid retrieval pipeline (Azure AI Search + ONNX re-ranking) keeps answers grounded and verifiable, while Hugging Face models handle local embeddings.",
+    tech: [".NET 8", "RAG", "ONNX Runtime", "Hugging Face", "Azure OpenAI", "Azure AI Search"],
     href: GITHUB_URL,
   },
   {
-    name: "AI-helpdesk",
+    name: "ADH — AI-Driven Helpdesk",
     tagline: "Intelligent IT helpdesk system.",
-    desc: "Combines LLMs with proactive infrastructure management. Features a real-time chat interface (SignalR), semantic search via pgvector, automated asset discovery through LDAP/Active Directory, and Jira integration for ticket management.",
-    solved: "Reduces repetitive support tickets through AI automation. A built-in PII scrubber sanitizes queries before they reach the model. Self-healing logic monitors disk space and restarts services without human intervention.",
+    desc: "Combines local LLMs with proactive infrastructure management. Features a real-time chat interface (SignalR), semantic search via pgvector, automated asset discovery through LDAP/Active Directory, and Jira integration for ticket management.",
+    solved: "Reduces repetitive support tickets through AI automation. A built-in PII scrubber sanitizes queries before they reach the model, and an ONNX re-ranker via Semantic Kernel keeps retrieval precise. Self-healing logic monitors disk space and restarts services without human intervention.",
+    tech: [".NET 10", "SignalR", "PostgreSQL", "pgvector", "LDAP", "JIRA", "Local LLMs", "Semantic Kernel", "ONNX Runtime"],
     href: GITHUB_URL,
   },
 ];
 
 const skillGroups = [
-  { title: "Cloud & infra", items: ["Azure", "Azure DevOps", "Azure Functions", "Azure Entra", "Docker", "Docker compose", "Linux", "Git", "CI/CD"] },
-  { title: "Architecture", items: ["C#", "asp net core", "web api (REST)", "MVC", "CQRS", "Clean architecture", "minimal APIs", "mediatR", "EF Core"] },
-  { title: "Testing", items: ["postman", "xUnit", "az load testing", "swagger", "debugger"] },
+  { title: "Cloud & Infrastructure", items: ["Azure", "Azure DevOps", "Azure Functions", "Azure Entra ID", "Docker", "Docker Compose", "Linux", "Git", "CI/CD"] },
+  { title: "Backend & Architecture", items: ["C#", "ASP.NET Core", "Web API (REST)", "ASP.NET MVC", "Minimal APIs", "Clean Architecture", "CQRS", "MediatR", "Entity Framework Core"] },
+  { title: "Quality & Testing", items: ["xUnit", "Postman", "Swagger / OpenAPI", "Azure Load Testing", "Debugging & Profiling"] },
   { title: "Observability & Persistence", items: ["PostgreSQL", "Grafana", "Prometheus"] },
-  { title: "LLM — Topics", items: ["RAG", "Chatbot", "HuggingFace", "Re-ranking", "Tools calling", "Structured Outputs", "Semantic search/cache"] },
-  { title: "AI — related", items: ["microsoft semantic kernel", "model context protocol", "Microsoft ML ONNX", "pgvector", "python (basics)"] },
+  { title: "LLM Engineering", items: ["Retrieval-Augmented Generation", "Conversational Agents", "Hugging Face", "Re-ranking", "Tool Calling", "Structured Outputs", "Semantic Search & Caching"] },
+  { title: "Applied AI", items: ["Microsoft Semantic Kernel", "Model Context Protocol", "ONNX Runtime", "pgvector", "Python (working knowledge)"] },
 ];
 
 const techLogos = [
