@@ -10,7 +10,6 @@ import {
   SiOllama,
   SiGit,
   SiGithub,
-  SiLinkedin,
   SiGrafana,
   SiPrometheus,
   SiPostman,
@@ -19,6 +18,7 @@ import {
   SiSwagger,
   SiBlazor,
 } from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa";
 import { VscAzure, VscAzureDevops } from "react-icons/vsc";
 
 export const Route = createFileRoute("/")({
