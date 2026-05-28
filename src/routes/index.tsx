@@ -311,8 +311,8 @@ function Portfolio() {
       {/* EXPERIENCE */}
       <section id="experience" className="bg-panel">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Experience</h2>
-          <div className="relative pl-8 border-l-2 border-border">
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Experience</h2></Reveal>
+          <Reveal className="relative pl-8 border-l-2 border-border">
             <span className="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-accent bg-background" />
             <h3 className="text-2xl font-medium">Junior Fullstack Developer</h3>
             <p className="text-muted-foreground mt-1">December 2025 – January 2026<br />Thinq Sp. z o.o. · Poznań</p>
@@ -323,7 +323,7 @@ function Portfolio() {
               <li>Designed and built responsive UI components using Telerik UI for ASP.NET Core</li>
               <li>Maintained and enhanced a legacy system based on Apache Subversion (SVN)</li>
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 
