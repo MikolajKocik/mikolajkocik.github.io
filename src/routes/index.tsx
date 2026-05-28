@@ -286,7 +286,7 @@ function Portfolio() {
                 <SiGithub size={22} />
               </a>
               <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-accent transition-colors">
-                <SiLinkedin size={22} />
+                <FaLinkedin size={22} />
               </a>
               <a href={`mailto:${EMAIL}`} className="text-sm hover:text-accent transition-colors">{EMAIL}</a>
             </div>
