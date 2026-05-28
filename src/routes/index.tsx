@@ -190,7 +190,7 @@ function Portfolio() {
 
       {/* INTRO */}
       <section className="bg-background">
-        <div className="mx-auto max-w-4xl px-6 py-20 space-y-5 text-lg">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-14 md:py-20 space-y-5 text-lg">
           <p>Hi! I'm Mikołaj Kocik, a <span className="text-primary font-medium">.NET Developer &amp; AI Engineer</span>.</p>
           <p>
             I build applications with a strong emphasis on <span className="text-primary font-medium">scalability</span> and{" "}
@@ -234,8 +234,8 @@ function Portfolio() {
 
       {/* PROJECTS */}
       <section id="projects" className="bg-background">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8 md:mb-12">Projects</h2>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Projects</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((p) => (
               <article key={p.name} className="bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
@@ -263,8 +263,8 @@ function Portfolio() {
 
       {/* EXPERIENCE */}
       <section id="experience" className="bg-panel">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8 md:mb-12">Experience</h2>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Experience</h2>
           <div className="relative pl-8 border-l-2 border-border">
             <span className="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-accent bg-background" />
             <h3 className="text-2xl font-medium">Junior Fullstack Developer</h3>
@@ -282,7 +282,7 @@ function Portfolio() {
 
       {/* EDUCATION */}
       <section id="education" className="bg-background">
-        <div className="mx-auto max-w-5xl px-6 py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2>
           <p className="text-xl">Computer Science</p>
           <p className="text-lg text-muted-foreground">WSB Merito University in Poznań</p>
@@ -301,8 +301,8 @@ function Portfolio() {
 
       {/* SKILLS */}
       <section id="skills" className="bg-panel">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8 md:mb-12">Skills</h2>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Skills</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillGroups.map((g) => (
               <div key={g.title} className="bg-card border border-border rounded-md overflow-hidden">
