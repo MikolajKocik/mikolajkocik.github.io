@@ -152,9 +152,9 @@ function Portfolio() {
     <div className="min-h-screen bg-background text-foreground">
       {/* NAV */}
       <header className="sticky top-0 z-50 bg-nav text-nav-foreground border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-          <a href="#top" className="font-mono text-lg">{"{{ Mikołaj Kocik }}"}</a>
-          <nav className="hidden md:flex gap-8 text-sm">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+          <a href="#top" className="font-mono text-sm sm:text-lg truncate">{"{{ Mikołaj Kocik }}"}</a>
+          <nav className="flex flex-wrap justify-end gap-x-4 gap-y-1 sm:gap-x-6 md:gap-8 text-xs sm:text-sm">
             {navItems.map((n) => (
               <a key={n.label} href={n.href} target={n.external ? "_blank" : undefined} rel={n.external ? "noopener noreferrer" : undefined} className="hover:text-accent transition-colors">
                 {n.label}
@@ -168,12 +168,12 @@ function Portfolio() {
       <section id="top" className="relative overflow-hidden">
         <img src={heroBg} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent" />
-        <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-24 grid md:grid-cols-[auto_1fr_auto] gap-8 items-center">
-          <img src={photo} alt="Mikołaj Kocik" className="w-44 h-44 md:w-52 md:h-52 rounded-md object-cover ring-2 ring-white/40 shadow-2xl" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 md:py-24 grid md:grid-cols-[auto_1fr_auto] gap-6 sm:gap-8 items-center text-center md:text-left">
+          <img src={photo} alt="Mikołaj Kocik" className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-md object-cover ring-2 ring-white/40 shadow-2xl mx-auto md:mx-0" />
           <div className="text-white">
-            <h1 className="text-3xl md:text-5xl font-semibold">.NET Developer<br />&amp; AI Engineer</h1>
-            <div className="mt-4 h-px w-64 bg-white/60" />
-            <div className="mt-6 flex flex-wrap gap-3">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold">.NET Developer<br />&amp; AI Engineer</h1>
+            <div className="mt-4 h-px w-48 sm:w-64 bg-white/60 mx-auto md:mx-0" />
+            <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-3">
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2 rounded-md bg-primary/80 hover:bg-primary text-primary-foreground border border-white/30 transition">
                 <SiGithub /> Github
               </a>
@@ -190,7 +190,7 @@ function Portfolio() {
 
       {/* INTRO */}
       <section className="bg-background">
-        <div className="mx-auto max-w-4xl px-6 py-20 space-y-5 text-lg">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-14 md:py-20 space-y-5 text-lg">
           <p>Hi! I'm Mikołaj Kocik, a <span className="text-primary font-medium">.NET Developer &amp; AI Engineer</span>.</p>
           <p>
             I build applications with a strong emphasis on <span className="text-primary font-medium">scalability</span> and{" "}
@@ -234,14 +234,14 @@ function Portfolio() {
 
       {/* PROJECTS */}
       <section id="projects" className="bg-background">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="text-5xl text-primary font-semibold mb-12">Projects</h2>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Projects</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((p) => (
               <article key={p.name} className="bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <header className="bg-accent text-accent-foreground px-5 py-3 flex items-center justify-between">
-                  <h3 className="text-xl font-semibold">{p.name}</h3>
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-white transition">
+                <header className="bg-accent text-accent-foreground px-4 sm:px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
+                  <h3 className="text-lg sm:text-xl font-semibold">{p.name}</h3>
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-white transition">
                     <SiGithub /> Code
                   </a>
                 </header>
@@ -263,8 +263,8 @@ function Portfolio() {
 
       {/* EXPERIENCE */}
       <section id="experience" className="bg-panel">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <h2 className="text-5xl text-primary font-semibold mb-12">Experience</h2>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Experience</h2>
           <div className="relative pl-8 border-l-2 border-border">
             <span className="absolute -left-[11px] top-1 w-5 h-5 rounded-full border-2 border-accent bg-background" />
             <h3 className="text-2xl font-medium">Junior Fullstack Developer</h3>
@@ -282,8 +282,8 @@ function Portfolio() {
 
       {/* EDUCATION */}
       <section id="education" className="bg-background">
-        <div className="mx-auto max-w-5xl px-6 py-24">
-          <h2 className="text-5xl text-primary font-semibold mb-8">Education</h2>
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2>
           <p className="text-xl">Computer Science</p>
           <p className="text-lg text-muted-foreground">WSB Merito University in Poznań</p>
           <ul className="mt-4 space-y-3 list-disc pl-6">
@@ -301,8 +301,8 @@ function Portfolio() {
 
       {/* SKILLS */}
       <section id="skills" className="bg-panel">
-        <div className="mx-auto max-w-6xl px-6 py-24">
-          <h2 className="text-5xl text-primary font-semibold mb-12">Skills</h2>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Skills</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillGroups.map((g) => (
               <div key={g.title} className="bg-card border border-border rounded-md overflow-hidden">
