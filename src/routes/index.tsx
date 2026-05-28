@@ -153,6 +153,33 @@ const techLogos = [
   { Icon: SiPython, label: "Python", color: "#3776AB" },
 ];
 
+function Reveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: "easeOut", delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, toggle } = useTheme();
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      className="inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/20 hover:bg-white/10 transition-colors"
+    >
+      {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+    </button>
+  );
+}
+
 function Portfolio() {
   const marqueeItems = [...techLogos, ...techLogos];
   const currentYear = new Date().getFullYear();
