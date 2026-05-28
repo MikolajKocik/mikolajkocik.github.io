@@ -349,15 +349,17 @@ function Portfolio() {
       {/* SKILLS */}
       <section id="skills" className="bg-panel">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Skills</h2>
+          <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Skills</h2></Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillGroups.map((g) => (
-              <div key={g.title} className="bg-card border border-border rounded-md overflow-hidden">
-                <div className="bg-accent text-accent-foreground px-4 py-2 font-semibold">{g.title}</div>
-                <ul className="p-5 space-y-1.5 list-disc pl-8 text-muted-foreground">
-                  {g.items.map((i) => <li key={i}>{i}</li>)}
-                </ul>
-              </div>
+            {skillGroups.map((g, idx) => (
+              <Reveal key={g.title} delay={idx * 0.05}>
+                <div className="h-full bg-card border border-border rounded-md overflow-hidden hover:border-primary/40 transition-colors">
+                  <div className="bg-accent text-accent-foreground px-4 py-2 font-semibold">{g.title}</div>
+                  <ul className="p-5 space-y-1.5 list-disc pl-8 text-muted-foreground">
+                    {g.items.map((i) => <li key={i}>{i}</li>)}
+                  </ul>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
