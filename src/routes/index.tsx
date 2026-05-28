@@ -275,21 +275,30 @@ function Portfolio() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-24">
           <h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-8 md:mb-12">Projects</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {projects.map((p) => (
-              <article key={p.name} className="bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-                <header className="bg-accent text-accent-foreground px-4 sm:px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
-                  <h3 className="text-lg sm:text-xl font-semibold">{p.name}</h3>
-                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-white transition">
-                    <SiGithub /> Code
-                  </a>
-                </header>
-                <div className="p-6 space-y-4">
-                  <p className="font-medium">{p.tagline}</p>
-                  <p className="text-muted-foreground">{p.desc}</p>
-                  <h4 className="text-primary text-xl font-semibold pt-2">What problems solved?</h4>
-                  <p className="text-muted-foreground">{p.solved}</p>
-                </div>
-              </article>
+            {projects.map((p, idx) => (
+              <Reveal key={p.name} delay={idx * 0.05}>
+                <article className="h-full bg-card border border-border rounded-md overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                  <header className="bg-accent text-accent-foreground px-4 sm:px-5 py-3 flex items-center justify-between gap-3 flex-wrap">
+                    <h3 className="text-lg sm:text-xl font-semibold">{p.name}</h3>
+                    <a href={p.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs sm:text-sm px-3 py-1 rounded bg-background text-foreground hover:bg-background/80 transition">
+                      <SiGithub /> Code
+                    </a>
+                  </header>
+                  <div className="p-6 space-y-4">
+                    <p className="font-medium">{p.tagline}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.tech.map((t) => (
+                        <span key={t} className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-mono bg-primary/10 text-primary border border-primary/20">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground">{p.desc}</p>
+                    <h4 className="text-primary text-xl font-semibold pt-2">Problems solved</h4>
+                    <p className="text-muted-foreground">{p.solved}</p>
+                  </div>
+                </article>
+              </Reveal>
             ))}
           </div>
           <p className="mt-10 text-lg">More projects and descriptions available on my Github profile</p>
