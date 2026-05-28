@@ -62,7 +62,17 @@ export const Route = createFileRoute("/")({
             "https://github.com/MikolajKocik",
             "https://www.linkedin.com/in/miko%C5%82aj-kocik-862b46317/",
           ],
-          knowsAbout: [".NET", "C#", "ASP.NET Core", "Azure", "Clean Architecture", "CQRS", "LLM", "RAG", "Semantic Kernel"],
+          knowsAbout: [
+            ".NET",
+            "C#",
+            "ASP.NET Core",
+            "Azure",
+            "Clean Architecture",
+            "CQRS",
+            "LLM",
+            "RAG",
+            "Semantic Kernel",
+          ],
         }),
       },
     ],
@@ -89,7 +99,7 @@ const projects = [
     desc: "Handles PZ/WZ/RW/MM operations, generates PDF documents and stores them in Azure Blob Storage. Includes AI-assisted vector search via Ollama.",
     solved: "Eliminates manual stock tracking. An asynchronous document flow offloads the API — a background worker generates PDFs and saves metadata to the database. Deployed via GitHub Actions with OIDC, no stored secrets.",
     tech: [".NET 8", "PostgreSQL", "pgvector", "Ollama (RAG)", "Event-Driven", "RabbitMQ", "Redis"],
-    href: GITHUB_URL,
+    href: `${GITHUB_URL}/StockManager`,
   },
   {
     name: "RentCarX",
@@ -97,7 +107,7 @@ const projects = [
     desc: "Covering the full rental lifecycle: search, booking, Stripe payments, PDF/Excel reporting, and email notifications via Hangfire background workers.",
     solved: "Decouples long-running tasks (reservation deadlines, emails) from the main API thread. Full observability stack with Grafana and Prometheus. Performance verified under load via Azure Load Testing.",
     tech: [".NET 8", "Azure", "Docker", "Stripe", "Hangfire", "Grafana"],
-    href: GITHUB_URL,
+    href: `${GITHUB_URL}/RentCarX`,
   },
   {
     name: "BookIt",
@@ -105,7 +115,7 @@ const projects = [
     desc: "Includes a full reservation cycle, dynamic availability checks, discount codes, Stripe payments, and guest reviews. Includes a dedicated MCP server for AI agent integration.",
     solved: "Automates guest service via AI agents — an LLM invokes MCP tools (e.g. notify_staff → Slack) without human involvement. Eliminates manual booking errors and handles payments without storing sensitive card data.",
     tech: [".NET 8", "ASP.NET MVC", "Chatbot", "Model Context Protocol"],
-    href: GITHUB_URL,
+    href: `${GITHUB_URL}/BookIt`,
   },
   {
     name: "Docs-assistant",
@@ -113,7 +123,7 @@ const projects = [
     desc: "Indexes large document corpora and serves contextual answers grounded in source material, combining on-device inference with managed Azure AI services.",
     solved: "Reduces time spent searching internal documentation. A hybrid retrieval pipeline (Azure AI Search + ONNX re-ranking) keeps answers grounded and verifiable, while Hugging Face models handle local embeddings.",
     tech: [".NET 8", "RAG", "ONNX Runtime", "Hugging Face", "Azure OpenAI", "Azure AI Search"],
-    href: GITHUB_URL,
+    href: `${GITHUB_URL}/Azure-RAG-Docs-Assistant`,
   },
   {
     name: "ADH — AI-Driven Helpdesk",
@@ -121,7 +131,7 @@ const projects = [
     desc: "Combines local LLMs with proactive infrastructure management. Features a real-time chat interface (SignalR), semantic search via pgvector, automated asset discovery through LDAP/Active Directory, and Jira integration for ticket management.",
     solved: "Reduces repetitive support tickets through AI automation. A built-in PII scrubber sanitizes queries before they reach the model, and an ONNX re-ranker via Semantic Kernel keeps retrieval precise. Self-healing logic monitors disk space and restarts services without human intervention.",
     tech: [".NET 10", "SignalR", "PostgreSQL", "pgvector", "LDAP", "JIRA", "Local LLMs", "Semantic Kernel", "ONNX Runtime"],
-    href: GITHUB_URL,
+    href: `${GITHUB_URL}/ai-driven-helpdesk`,
   },
 ];
 
@@ -332,7 +342,7 @@ function Portfolio() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-16 md:py-24">
           <Reveal><h2 className="text-3xl sm:text-4xl md:text-5xl text-primary font-semibold mb-6 md:mb-8">Education</h2></Reveal>
           <p className="text-xl">Computer Science</p>
-          <p className="text-lg text-muted-foreground">WSB Merito University in Poznań</p>
+          <p className="text-lg text-muted-foreground">WSB Merito University in Poznan</p>
           <ul className="mt-4 space-y-3 list-disc pl-6">
             <li>
               <span className="font-medium">Engineer</span><br />
