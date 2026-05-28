@@ -25,15 +25,44 @@ import { VscAzure, VscAzureDevops } from "react-icons/vsc";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mikołaj Kocik — .NET Developer & AI Engineer" },
-      { name: "description", content: "Portfolio of Mikołaj Kocik, a .NET Developer & AI Engineer based in Poznań. Scalable systems, clean architecture, LLM integrations." },
+      { title: "Mikołaj Kocik — .NET Developer & AI Engineer | Poznań" },
+      { name: "description", content: "Portfolio of Mikołaj Kocik — .NET Developer & AI Engineer based in Poznań. C#, ASP.NET Core, Azure, Clean Architecture, CQRS, LLM & RAG integrations." },
+      { name: "keywords", content: ".NET Developer, AI Engineer, C#, ASP.NET Core, Azure, Clean Architecture, CQRS, LLM, RAG, Semantic Kernel, Poznań, Mikołaj Kocik" },
+      { name: "author", content: "Mikołaj Kocik" },
+      { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Mikołaj Kocik — .NET Developer & AI Engineer" },
-      { property: "og:description", content: "From system design to clean implementation." },
+      { property: "og:description", content: "From system design to clean implementation. Scalable .NET systems and AI-powered applications." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { property: "og:locale", content: "en_US" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Mikołaj Kocik — .NET Developer & AI Engineer" },
+      { name: "twitter:description", content: "From system design to clean implementation." },
     ],
     links: [
+      { rel: "canonical", href: "/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Mikołaj Kocik",
+          jobTitle: ".NET Developer & AI Engineer",
+          url: "/",
+          email: "mikolajkocik@onet.pl",
+          address: { "@type": "PostalAddress", addressLocality: "Poznań", addressCountry: "PL" },
+          sameAs: [
+            "https://github.com/MikolajKocik",
+            "https://www.linkedin.com/in/miko%C5%82aj-kocik-862b46317/",
+          ],
+          knowsAbout: [".NET", "C#", "ASP.NET Core", "Azure", "Clean Architecture", "CQRS", "LLM", "RAG", "Semantic Kernel"],
+        }),
+      },
     ],
   }),
   component: Portfolio,
