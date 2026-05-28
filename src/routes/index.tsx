@@ -4,7 +4,7 @@ import heroBg from "@/assets/hero-bg.svg";
 import diagramLaptop from "@/assets/diagram-laptop.png";
 import {
   SiDotnet,
-  SiCsharp,
+  SiSharp,
   SiPostgresql,
   SiDocker,
   SiHuggingface,
